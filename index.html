@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WINK 사용자 매뉴얼</title>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --primary: #4F46E5;       /* 메인 컬러 (인디고) */
@@ -282,6 +283,28 @@
             background: #e2e8f0; padding: 4px 8px; border-radius: 4px; 
             color: #475569; font-weight: bold; font-family: monospace;
         }
+
+        /* 4. [누락됨] 근로자 서명 가이드 전용 타임라인 CSS */
+        .sign-process { display: flex; flex-direction: column; gap: 0; margin: 3rem 0; }
+        .step-item { display: flex; gap: 1.5rem; align-items: flex-start; position: relative; padding-bottom: 3rem; }
+        .step-item:last-child { padding-bottom: 0; }
+        .step-item:not(:last-child)::after {
+            content: ''; position: absolute; left: 21px; top: 45px; bottom: 5px; width: 2px;
+            background: repeating-linear-gradient(to bottom, var(--primary) 0, var(--primary) 5px, transparent 5px, transparent 10px); opacity: 0.3;
+        }
+        .step-badge {
+            width: 44px; height: 44px; background: var(--primary); color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.2rem;
+            flex-shrink: 0; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4); z-index: 1;
+        }
+        .step-content {
+            background: #f8fafc; padding: 1.5rem; border-radius: 20px; border: 1px solid #e2e8f0;
+            flex: 1; display: flex; align-items: center; gap: 1.5rem; transition: all 0.3s;
+        }
+        .step-content:hover { transform: translateX(8px); background: #fff; border-color: var(--primary); box-shadow: var(--shadow-md); }
+        .step-info h4 { font-size: 1.2rem; font-weight: 900; color: #1e293b; margin-bottom: 0.3rem; }
+        .step-info p { font-size: 1rem; color: #64748b; margin: 0; }
+        .step-icon-box { width: 54px; height: 54px; background: white; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: var(--primary); box-shadow: var(--shadow-sm); }
 
         /* 작성 가이드 (Process Steps) */
         .process-steps {
@@ -600,19 +623,41 @@
                 <h2>3. 근로자 등록</h2>
                 <p>근로자를 시스템에 등록합니다. 개별 등록과 엑셀 일괄 등록이 가능합니다.</p>
 
-                <h3>3-1. 개별 및 대량 등록</h3>
+                <h3>3-1. 근로자 그룹관리 </h3>
                 <p>메뉴 <strong>[근로자] > [국내근로자]</strong>로 이동합니다.</p>
                 <ul>
-                    <li><strong>개별 등록:</strong> [추가] 버튼 클릭 후 정보 입력</li>
-                    <li><strong>대량 등록:</strong> [엑셀 업로드] > 양식 다운로드 > 작성 후 업로드</li>
+                <li>그룹을 등록하여 근로자별로 그룹을 지정하여 관리 할 수 있습니다.</li>
+                </ul>
+                <div class="img-box">
+                    <img src="img/06-1_worker.png" alt="근로자 관리" class="manual-img" onerror="imgError(this)">
+                    <div class="img-placeholder"><code>06-1_worker.png</code></div>
+                </div>
+
+                <h3>3-2. 개별 및 대량 등록</h3>
+                <p>메뉴 <strong>[근로자] > [국내근로자]</strong>로 이동합니다.</p>
+                <ul>
+                    <li><strong>개별 등록 : </strong> [추가] 버튼 클릭 후 정보 입력</li>
+                    <li><strong>대량 등록 : </strong> [엑셀 업로드] > 양식 다운로드 > 작성 후 업로드</li>
                 </ul>
                 <div class="img-box">
                     <img src="img/05_worker.png" alt="근로자 관리" class="manual-img" onerror="imgError(this)">
                     <div class="img-placeholder"><code>05_worker.png</code></div>
                 </div>
+                <div class="img-box">
+                    <img src="img/05-1_worker.png" alt="근로자 관리" class="manual-img" onerror="imgError(this)">
+                    <div class="img-placeholder"><code>05-1_worker.png</code></div>
+                </div>
 
-                <h3>3-2. 문서 및 그룹 관리</h3>
-                <p>근로자별로 그룹을 지정하거나, 신분증 사본 등 관련 문서를 <strong>[문서보관함]</strong>에 업로드하여 관리할 수 있습니다.</p>
+                <h3>3-3. 문서 및 그룹 관리</h3>
+                <p>근로자별로 신분증 사본 등 관련 문서를 <strong>[문서보관함]</strong>에 업로드하여 관리하며, 국내근로자에도 문서를 추가하여 근로자 검색 시 바로 확인할 수 있습니다..</p>
+                <div class="img-box">
+                    <img src="img/06_worker.png" alt="근로자 관리" class="manual-img" onerror="imgError(this)">
+                    <div class="img-placeholder"><code>06_worker.png</code></div>
+                </div>
+                <div class="img-box">
+                    <img src="img/06-2_worker.png" alt="근로자 관리" class="manual-img" onerror="imgError(this)">
+                    <div class="img-placeholder"><code>06-2_worker.png</code></div>
+                </div>
             </div>
 
             <!-- [4] 서식 만들기 -->
@@ -663,6 +708,10 @@
                         <img src="img/08_form_text.png" alt="텍스트배치" class="manual-img" onerror="imgError(this)">
                         <div class="img-placeholder"><code>08_form_text.png</code></div>
                     </div>
+                    <div class="img-box">
+                        <img src="img/08-1_form_text.png" alt="텍스트배치" class="manual-img" onerror="imgError(this)">
+                        <div class="img-placeholder"><code>08-1_form_text.png</code></div>
+                    </div>
                 </div>
 
                 <div id="step5" class="sub-tab-content">
@@ -678,10 +727,25 @@
             <!-- [5] 도장 -->
             <div id="seal" class="tab-content">
                 <h2>5. 도장 및 서명 등록</h2>
-                <p><strong>[전자문서] > [서명]</strong>에서 등록합니다.</p>
+                <p>회사 직인을 미리 등록해두면 계약서 작성 시 편리합니다.</p>
+                
+                <h3>등록 방법</h3>
+                <p>메뉴 <strong>[전자문서] >[계약서 서식] > [서명]</strong>에서 등록 가능합니다.</p>
+                <ul>
+                    <li><strong>도장 만들기:</strong> 회사명을 입력하면 도장 이미지가 자동 생성됩니다. (추천)</li>
+                    <li><strong>도장 업로드:</strong> 실제 인감 도장 이미지를 업로드합니다.</li>
+                </ul>
                 <div class="img-box">
                     <img src="img/10_seal_make.png" alt="도장등록" class="manual-img" onerror="imgError(this)">
                     <div class="img-placeholder"><code>10_seal_make.png</code></div>
+                </div>
+                <div class="img-box">
+                    <img src="img/10-1_seal_make.png" alt="도장등록" class="manual-img" onerror="imgError(this)">
+                    <div class="img-placeholder"><code>10-1_seal_make.png</code></div>
+                </div>
+                <div class="img-box">
+                    <img src="img/10-2_seal_make.png" alt="도장등록" class="manual-img" onerror="imgError(this)">
+                    <div class="img-placeholder"><code>10-2_seal_make.png</code></div>
                 </div>
             </div>
 
@@ -748,11 +812,62 @@
             <!-- [8] 가이드 -->
             <div id="guide" class="tab-content">
                 <h2>8. 근로자 서명 가이드</h2>
-                <div class="info-box">
-                    <span>📱</span>
-                    <strong>서명 진행 프로세스:</strong> 링크 클릭 → 본인 인증 → 서명 → 완료
+                <p>근로자가 서명을 진행하는 5단계 프로세스입니다. 수신자에게 안내 시 활용하세요.</p>
+                
+                <div class="sign-process">
+                    <div class="step-item">
+                        <div class="step-badge">1</div>
+                        <div class="step-content">
+                            <div class="step-icon-box"><i class="fa-solid fa-comment-dots"></i></div>
+                            <div class="step-info">
+                                <h4>링크 접속</h4>
+                                <p>카카오톡이나 문자로 전송된 전자계약 링크를 클릭합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-badge">2</div>
+                        <div class="step-content">
+                            <div class="step-icon-box"><i class="fa-solid fa-fingerprint"></i></div>
+                            <div class="step-info">
+                                <h4>본인 인증</h4>
+                                <p>이름과 휴대폰 번호를 입력하여 간단히 본인을 확인합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-badge">3</div>
+                        <div class="step-content">
+                            <div class="step-icon-box"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                            <div class="step-info">
+                                <h4>내용 확인</h4>
+                                <p>계약서의 상세 내용을 꼼꼼하게 검토합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-badge">4</div>
+                        <div class="step-content">
+                            <div class="step-icon-box"><i class="fa-solid fa-pen-nib"></i></div>
+                            <div class="step-info">
+                                <h4>전자 서명</h4>
+                                <p>서명란에 마우스나 손가락을 이용해 서명을 입력합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-badge">5</div>
+                        <div class="step-content">
+                            <div class="step-icon-box"><i class="fa-solid fa-cloud-arrow-down"></i></div>
+                            <div class="step-info">
+                                <h4>완료 및 저장</h4>
+                                <p>서명 완료 즉시 계약서를 확인하고 PDF로 다운로드합니다.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="img-box" style="max-width: 400px; margin: 0 auto;">
+
+                <div class="img-box">
                     <img src="img/16_sign_guide.png" alt="근로자서명" class="manual-img" onerror="imgError(this)">
                     <div class="img-placeholder"><code>16_sign_guide.png</code></div>
                 </div>
@@ -768,7 +883,7 @@
                     <div style="display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;">
                         <div style="text-align: center;">
                             <div style="font-size: 2rem; margin-bottom: 0.5rem;">📞</div>
-                            <div style="font-weight: 800; font-size: 1.2rem; color: #1e293b;">1533-5198</div>
+                            <div style="font-weight: 800; font-size: 1.2rem; color: #1e293b;">1533-5189</div>
                             <div style="font-size: 0.85rem; color: #64748b;">평일 09:00 - 18:00</div>
                         </div>
                         <div style="text-align: center;">
@@ -786,5 +901,4 @@
         </div>
     </main>
 </body>
-
 </html>
